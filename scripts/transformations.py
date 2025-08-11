@@ -21,10 +21,10 @@ def add_claim_priority(df):
 def add_claim_period(df):
     return df.withColumn(
         "claim_date",
-        to_date(col("claim_date"), "yyyy-MM-dd")
+        to_date(col("claim_date"), "yyyy-MM-dd").cast(StringType())
     ).withColumn(
         "claim_period",
-        date_format(col("claim_date"), "yyyy-MM")
+        date_format(col("claim_date"), "yyyy-MM").cast(StringType())
     )
 
 

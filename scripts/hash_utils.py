@@ -32,7 +32,6 @@ def add_hash_id(spark, df):
 
     logger.info(f'Successfully collected {len(unique_claim_ids)} hashes for claim ids')
 
-    # Broadcast the mapping for use in Spark
     broadcast_hash_map = spark.sparkContext.broadcast(claim_hash_map)
 
     # Define UDF to get hash from broadcasted map
