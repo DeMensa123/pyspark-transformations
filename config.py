@@ -11,11 +11,12 @@ class Settings:
     def __init__(self):
         # Base directory (current file's parent)
         self.BASE_DIR = Path(__file__).resolve(strict=True).parent
-        self.INPUT_DIR = os.getenv("INPUT_DIR", str(self.BASE_DIR / "data"))
-        self.OUTPUT_DIR = os.getenv("OUTPUT_DIR", str(self.BASE_DIR / "output"))
-        self.INPUT_CLAIMS_CSV = os.getenv(str(Path(self.INPUT_DIR) / "INPUT_CLAIMS_CSV"), str(Path(self.INPUT_DIR) / "claims_data.csv"))
-        self.INPUT_POLICYHOLDER_CSV = os.getenv(str(Path(self.INPUT_DIR) / "INPUT_POLICYHOLDER_CSV"), str(Path(self.INPUT_DIR) / "policyholder_data.csv"))
-        self.OUTPUT_PROCESSED_CLAIMS_CSV = os.getenv(str(Path(self.OUTPUT_DIR) / "OUTPUT_PROCESSED_CLAIMS_CSV"), str(Path(self.OUTPUT_DIR) / "processed_claims.csv"))
+        self.INPUT_DIR = Path(os.getenv("INPUT_DIR"))
+        self.OUTPUT_DIR = Path(os.getenv("OUTPUT_DIR"))
+
+        self.INPUT_CLAIMS_CSV = str(self.INPUT_DIR / os.getenv("INPUT_CLAIMS_CSV"))
+        self.INPUT_POLICYHOLDER_CSV = str(self.INPUT_DIR / os.getenv("INPUT_POLICYHOLDER_CSV"))
+        self.OUTPUT_PROCESSED_CLAIMS_CSV = str(self.OUTPUT_DIR / os.getenv("OUTPUT_PROCESSED_CLAIMS_CSV"))
 
         # Logging configuration dict
         self.LOGS = {
