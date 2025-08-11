@@ -1,4 +1,8 @@
-# PYSPARK TRANSFORMATIONS
+# PySpark transformations
+
+## Overview
+This project loads the provided CSV datasets, apply the specified Spark transformations, and save the result as a single CSV file named.
+
 
 ## Project setup
 
