@@ -41,9 +41,6 @@ def add_hash_id(df, hash_map):
     """
     def lookup_hash(claim_id):
         return hash_map.get(claim_id)
+
     lookup_hash_udf = udf(lookup_hash, StringType())
     return df.withColumn("hash_id", lookup_hash_udf(col("claim_id")))
-
-
-def remove_duplicates(df):
-    return df.dropDuplicates(["claim_id"])

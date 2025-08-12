@@ -21,8 +21,12 @@ def main():
     spark = SparkSession.builder.master("local[*]").appName("DataTransformPipeline").getOrCreate()
 
     # Load datasets
-    claims_df = spark.read.csv(input_claims_file, header=True, inferSchema=True)
-    policies_df = spark.read.csv(input_policyholder_file, header=True, inferSchema=True)
+    try:
+        claims_df = spark.read.csv(input_claims_file, header=True, inferSchema=True)
+        policies_df = spark.read.csv(input_policyholder_file, header=True, inferSchema=True)
+    except Exception as e:
+        logger.error(f'Failed to load input files: {e}')
+        raise e
 
     claims_df = claims_df.withColumnRenamed("region", "claim_region")
 
