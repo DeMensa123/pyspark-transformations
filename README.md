@@ -106,8 +106,6 @@ This project includes unit tests to verify each transformation function and util
 pytest tests/
 ```
 
----
-
 
 ## Assumptions
 
@@ -126,5 +124,6 @@ pytest tests/
 
 - The output is a single CSV file without extra Spark metadata files.
 
+---
 
 Made with 💜 and ☕️ by Denisa Mensatorisová
